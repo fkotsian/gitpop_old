@@ -10,10 +10,12 @@ module.exports = function(config) {
       'jasmine'
     ],
     files: [
-      'spec/*_spec.js'
+      'spec/*_spec.js',
+      'spec/**/*_spec.js'
     ],
     preprocessors: {
-      'spec/*_spec.js': ['webpack']
+      'spec/*_spec.js': ['webpack'],
+      'spec/**/*_spec.js': ['webpack']
     },
     reporters: ['dots'],
     webpack: {

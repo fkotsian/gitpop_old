@@ -13,10 +13,13 @@ var config = {
   module: {
     loaders: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         include: SRC_DIR,
-        exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   }
