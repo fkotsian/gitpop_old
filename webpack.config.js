@@ -5,7 +5,10 @@ var BUILD_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'app');
 
 var config = {
-  entry: APP_DIR + '/index.js',
+  entry: [
+    'babel-polyfill', 
+    APP_DIR + '/index.js'
+  ],
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
@@ -14,8 +17,12 @@ var config = {
     loaders: [
       {
         test: /\.jsx?$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        query: {
+          plugins: ['transform-runtime'],
+          presets: ['es2015', 'stage-0']
+        }
       },
       {
         test: /\.json$/,
